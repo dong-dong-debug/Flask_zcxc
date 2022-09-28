@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block content %}
+    <script>
+        $(document).ready(function () {
+            var ssjk = $("#ssjk").val()
+            if (ssjk == "实时监控") {
+                $("#jiankong").addClass("active")
+            }
+        })
+
+        function jiangkong() {
+            $.ajax({
+                url: '/findprocess',
+                type: 'post',    // 发送post请求
+                success: function (data) {
+                    $("#message").css("display", 'block');
+                    if (data['status'] == '0') {
+                        $("#message").text("进程未开启")
+                        $("#message").removeClass("alert-success")
+                        $("#message").addClass("alert-danger")
+                    } else if (data['status'] == '1') {
+                        if (data["message"] == "normal"){
+                            $("#message").text("进程正常运行")
+                        }else {
+                            bootbox.alert({'title': '错误提示', 'message': "进程已重启,重启时间为:"+data["times"]})
+                            $("#message").text("进程已重启,重启时间为:"+data["times"])
+                        }
+                    }
+                }
+            });
+        }
+
+         function ssjiangkong() {
+            setInterval(function () {
+                jiangkong()
+            }, 5000)
+        }
+    </script>
+    <input type="text" class="form-control" id="ssjk" style="display: none" value="实时监控">
+    <div class="col">
+        <button type="submit" class="btn btn-warning" onclick="ssjiangkong()">实时进程监控</button>
+    </div>
+    <div class="alert alert-success" style="display: none;margin: 10px" role="alert" id="message">
+    </div>
+{% endblock %}
+

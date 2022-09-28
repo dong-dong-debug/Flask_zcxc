@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>flask学习</title>
+    <link rel="stylesheet" href="static/css/bootstrap.4.6.min.css">
+    <script type="text/javascript" src="static/js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="static/js/bootstrap.js"></script>
+    <script type="text/javascript" src="static/js/bootbox.min.js"></script>
+
+</head>
+<body>
+<div style="padding: 10px">
+    <ul class="nav nav-pills">
+        <li class="nav-item">
+            <a class="nav-link" href="{{ url_for("index.upload_file") }}" onclick="shuangchuanwenjian()" id="shuangchuan">上传文件</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ url_for("index.find_process") }}" onclick="shishijiankong()" id="jiankong">实时监控</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ url_for("index.bill_carry") }}" onclick="huadanjiance()" id="huadan">话单监测</a>
+        </li>
+    </ul>
+</div>
+<div style="padding: 10px">
+ {% block content %}{% endblock %}
+</div>
+</body>
+</html>

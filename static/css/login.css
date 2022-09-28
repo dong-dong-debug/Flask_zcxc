@@ -1,0 +1,41 @@
+form {
+    border: 1px #ccc solid;
+    border-radius: 8px;
+    box-shadow: 2px 3px 20px #ccc;
+    width: 260px;
+    margin: auto; /* 当宽度固定可居中 */
+    padding: 0 20px;
+
+
+}
+
+.row {
+    border: 0px red solid;
+    margin-bottom: 15px;
+}
+
+.btn, h3 {
+    margin: 30px 0;
+}
+
+/* 属性选择器 */
+input[type='submit'] {
+    width: 100%;
+    background-color: blue;
+    color: white;
+    border: 0;
+    padding: 5px 0;
+    border-radius: 20px;
+}
+
+label {
+    width: 66px;
+    display: inline-block; /* 内连块元素，宽度一定 */
+    text-align: right;
+}
+
+.txt {
+    padding: 5px;
+    border: solid 1px #ccc;
+    border-radius: 5px;
+}

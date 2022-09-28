@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录</title>
+
+    <!-- 添加外部样式end -->
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/login.css') }}">
+    <!-- 添加外部样式end -->
+</head>
+
+<body>
+
+<form action="{{ url_for("user.login") }}" method="POST">
+    <h3>用户登录：</h3>
+    <!-- 表单控件 -->
+    <!-- 布局元素div -->
+    <div class="row">
+        <!-- label内联元素，宽度自动 -->
+        <label for="username">用户名：</label>
+        <input class="txt" type="text" id="username" name="username" placeholder="请输入用户名">
+    </div>
+    <div class="row">
+        <label for="password">密码：</label>
+        <input class="txt" type="password" id="password" name="password" placeholder="请输入密码">
+    </div>
+    {% for message in get_flashed_messages() %}
+        <div>{{ message }}</div>
+    {% endfor %}
+    <div class="row btn">
+        <input type="submit" value="登录">
+    </div>
+
+</form>
+
+
+</body>
+</html>

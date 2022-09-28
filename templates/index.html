@@ -1,0 +1,31 @@
+{% extends "base.html"%}
+{% block content%}
+    <script>
+        $(document).ready(function(){
+            var scwj = $("#scwj").val()
+            console.log(scwj)
+            if(scwj == "上传文件"){
+                $("#shuangchuan").addClass("active")
+            }
+        })
+    </script>
+    <form action="{{ url_for('index.upload_file') }} " method="post" enctype=multipart/form-data>
+        <div class="form-row">
+             <input type="text" class="form-control" id="scwj" style="display: none" value="上传文件">
+            <div class="col">
+                <input type="file" class="form-control"name="zipfile" accept="application/zip"/>
+            </div>
+            <div class="col">
+                <input type="text" class="form-control" name="destpath" placeholder="上传目的地址">
+            </div>
+             <div class="col">
+                <button type="submit" class="btn btn-primary ">上传</button>
+            </div>
+        </div>
+    </form>
+    {% for message in get_flashed_messages() %}
+        <div class="alert alert-danger" style="display: block;margin: 10px" role="alert">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endblock %}
